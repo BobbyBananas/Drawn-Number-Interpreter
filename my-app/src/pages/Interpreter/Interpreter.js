@@ -35,7 +35,7 @@ function Interpreter() {
         //The Bottom Layer with the BackGround
         initCanvas(mapRef, mapContextRef);
         clearMap(mapRef);
-        
+
         //Middle Layer, Where the drawing till be made. Identical to Map Layer.
         initCanvas(canvasRef, contextRef);
 
@@ -235,17 +235,18 @@ function Interpreter() {
             <div// The Tool Buttons Above the Canvas
                 //ToDo: Minimum Bar Size.
                 style={{
-                    left: '-9%',
-                    height: '41px',
+                    left: '+9%',
+                    height: '210px',
                     width: canvasWidth,
-                    position: 'absolute'
                 }}
             >
                 <button
                     style = {{
-                        left: '0%',
-                        top:'+10%',
+                        left: '+30%',
+                        top:'+1%',
                         border: "2px solid red",
+                        fontSize: 100,
+                        zIndex: '3',
                         position: 'absolute'
                     }}
                     type="button"
@@ -276,7 +277,7 @@ function Interpreter() {
 
                     position: 'absolute',
                     left: '-9%',
-                    top: '40px',
+                    top: '+5%',
                 }}>
 
                 <canvas
