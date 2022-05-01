@@ -1,19 +1,18 @@
 // The Router Network that links the paces to their respective web addresses
+// Todo: Refactor to new version of react router dom
 
 import React, { Component } from "react";
 import { Router, Switch, Route } from "react-router-dom";
+import history from '../history';
 
-//The Default Landing Page
-import Home from "./pages/Home";
-
-//Other Pages
-import Interpreter from "./pages/Interpreter";
-
+//The Landing Pages
+import Home from "../../pages/Home/Home";
+import Interpreter from "../../pages/Interpreter/Interpreter";
 
 export default class Routes extends Component {
     render() {
         return (
-            <Router>
+            <Router history={history}>
                 <Switch>
                     <Route path="/" exact component={Home} />
                     <Route path="/Interpreter" component={Interpreter} />
