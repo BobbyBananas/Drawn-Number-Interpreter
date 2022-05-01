@@ -2,6 +2,7 @@
 // Code largely imported from previous etool project
 
 import React, {useEffect, useRef, useState} from "react";
+import BackGround from '../../SpaceBackground.jpg'
 
 function Interpreter() {
     //The State of the drawing tool
@@ -33,8 +34,8 @@ function Interpreter() {
     useEffect(() => {
         //The Bottom Layer with the BackGround
         initCanvas(mapRef, mapContextRef);
-
-
+        clearMap(mapRef);
+        
         //Middle Layer, Where the drawing till be made. Identical to Map Layer.
         initCanvas(canvasRef, contextRef);
 
@@ -172,10 +173,17 @@ function Interpreter() {
         context.clearRect(0, 0, canvas.width, canvas.height);
     }
 
+    const clearMap = (canvasRef) => {
+        const canvas = canvasRef.current;
+        const context = canvas.getContext("2d");
+        context.fillStyle = 'white';
+        context.fillRect(0, 0, canvas.width, canvas.height)
+    }
+
     //On Button Press Method
     const clearDrawing = () => {
         clearCanvas(canvasRef);
-        clearCanvas(mapRef)
+        clearMap(mapRef)
     }
 
     const mergeImage = () => {
@@ -209,11 +217,20 @@ function Interpreter() {
         <div
             style={{
                 width: '80%',
-                height: '50%',
+                //height: '50%',
                 position: 'relative',
-                left: '9%',
+                // left: '9%'
             }}
         >
+
+            <img //Background
+                alt={BackGround}
+                src={BackGround}
+                style={{
+                    zIndex: '4'
+                }}
+            >
+            </img>
 
             <div// The Tool Buttons Above the Canvas
                 //ToDo: Minimum Bar Size.
@@ -221,7 +238,7 @@ function Interpreter() {
                     left: '-9%',
                     height: '41px',
                     width: canvasWidth,
-                    position: 'relative'
+                    position: 'absolute'
                 }}
             >
                 <button
@@ -242,12 +259,13 @@ function Interpreter() {
                     top: '-40px',
                     left: '47.5%',
                     width: '60%',
-                    position: 'relative',
+                    position: 'absolute',
                     align: 'left',
+                    fontSize: 50
                 }}>
                 <h2>Draw a Number</h2>
 
-                <button style={{height: '40px', width: '100px',}}
+                <button style={{height: '200px', width: '800px', fontSize: 50}}
                         type="button" id="btnDownload" onClick={downloadImage}
                 >Download</button>
             </p>
